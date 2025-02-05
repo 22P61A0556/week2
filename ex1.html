@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script type="text/javascript">
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var mobile = document.getElementById("mobile").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var state = document.getElementById("state").value;
+            var country = document.getElementById("country").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var course = document.querySelector('input[name="course"]:checked');
+            
+            if (firstName == "") {
+                alert("First Name must be filled out.");
+                return false;
+            }
+
+            if (lastName == "") {
+                alert("Last Name must be filled out.");
+                return false;
+            }
+
+            if (mobile == "" || !/^\d{10}$/.test(mobile)) {
+                alert("Please enter a valid 10-digit mobile number.");
+                return false;
+            }
+
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email == "" || !emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            if (password == "" || password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            if (address == "") {
+                alert("Address must be filled out.");
+                return false;
+            }
+
+            if (city == "") {
+                alert("City must be filled out.");
+                return false;
+            }
+
+            if (state == "") {
+                alert("State must be filled out.");
+                return false;
+            }
+
+            if (country == "") {
+                alert("Country must be filled out.");
+                return false;
+            }
+
+            if (!gender) {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            if (!course) {
+                alert("Please select a course.");
+                return false;
+            }
+
+            return true; // If all fields are valid, allow form submission
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateForm()">
+        <!-- First Name -->
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName"><br><br>
+
+        <!-- Last Name -->
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName"><br><br>
+
+        <!-- Gender -->
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male"> Male
+        <input type="radio" id="female" name="gender" value="Female"> Female
+        <input type="radio" id="other" name="gender" value="Other"> Other<br><br>
+
+        <!-- Mobile Number -->
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" name="mobile"><br><br>
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <!-- Address -->
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br><br>
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br><br>
+
+        <!-- State -->
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br><br>
+
+        <!-- Country (Textbox) -->
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country"><br><br>
+
+        <!-- Course -->
+        <label>Course:</label>
+        <input type="radio" id="course1" name="course" value="Web Development"> Web Development
+        <input type="radio" id="course2" name="course" value="Data Science"> Data Science
+        <input type="radio" id="course3" name="course" value="Graphic Design"> Graphic Design<br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
